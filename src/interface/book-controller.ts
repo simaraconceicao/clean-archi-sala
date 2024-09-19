@@ -29,6 +29,7 @@ export class BookController {
 
     const { id } = req.params;
 
+    console.log('executing update usecase...')
     const bookUpdated = this.updateBookUseCase.execute(id, params);
     
     res.json({ message: `Livro com ${id} alterado com sucesso`, bookUpdated })

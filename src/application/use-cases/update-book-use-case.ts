@@ -8,6 +8,7 @@ export class UpdateBookUseCase {
   ){}
 
   execute(id: string, bodyParams: Partial<Book>) {
+    console.log('sucesso no usecase...')
     return this.bookRepository.update(id, bodyParams);
   }
    
