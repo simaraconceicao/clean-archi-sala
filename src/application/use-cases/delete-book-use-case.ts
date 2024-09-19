@@ -1,15 +1,12 @@
 import { Book } from '../../domain/book';
 import { BookRepository } from '../repositories/book-repository';
 
-export class ListAllBooksUseCase {
-  //seu codigo aqui
+export class DeleteBookUseCase {
   constructor(
     private bookRepository: BookRepository
   ) {}
 
-  execute(): Array<Book> {
-    const books = this.bookRepository.findAll();
-    return books
+  execute(id: string): Array<Book> {
+   return this.bookRepository.delete(id);
   }
-
 }

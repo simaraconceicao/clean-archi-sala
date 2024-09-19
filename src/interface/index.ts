@@ -5,7 +5,11 @@ export const app = express();
 app.use(express.json());
 
 //instancia de dependencias e rota aqui
-
+const { bookController } = configureDependencies();
+app.post('/books', (req, res) => bookController.create(req, res));
+app.get('/books', (req, res) => bookController.listAll(req, res));
+app.patch('/book/:id', (req, res) => bookController.update(req, res));
+app.delete('/book/:id', (req, res) => bookController.delete(req, res));
 
 if (require.main === module) {
   const PORT = 3333;
