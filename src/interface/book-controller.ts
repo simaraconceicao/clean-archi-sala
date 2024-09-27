@@ -19,25 +19,25 @@ export class BookController {
     res.status(201).json(book);
   }
 
-  listAll(req: Request, res: Response) {
-    const books = this.listAllBooksUseCase.execute();
+  async listAll(req: Request, res: Response) {
+    const books = await this.listAllBooksUseCase.execute();
     res.json(books);
   }
 
-  update(req: Request, res: Response) {
+  async update(req: Request, res: Response) {
     const params = req.body
 
     const { id } = req.params;
 
     console.log('executing update usecase...')
-    const bookUpdated = this.updateBookUseCase.execute(id, params);
+    const bookUpdated = await this.updateBookUseCase.execute(id, params);
     
     res.json({ message: `Livro com ${id} alterado com sucesso`, bookUpdated })
   }
 
-  delete(req: Request, res: Response) {
-    const { id }= req.params;
-    const booksFiltered = this.deleteBooksUseCase.execute(id);
+  async delete(req: Request, res: Response) {
+    const { id } = req.params;
+    const booksFiltered = await this.deleteBooksUseCase.execute(id);
     res.json({ message: `Livro com ${id} deletado com sucesso`, booksFiltered });
   }
 }

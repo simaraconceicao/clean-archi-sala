@@ -7,9 +7,8 @@ export class ListAllBooksUseCase {
     private bookRepository: BookRepository
   ) {}
 
-  execute(): Array<Book> {
-    const books = this.bookRepository.findAll();
-    return books
+  async execute(): Promise<Array<Book>> {
+    return await this.bookRepository.findAll();
   }
 
 }

@@ -2,14 +2,12 @@ import { Book } from '../../domain/book';
 import { BookRepository } from '../repositories/book-repository';
 
 export class UpdateBookUseCase {
- 
   constructor (
     private bookRepository: BookRepository
   ){}
 
-  execute(id: string, bodyParams: Partial<Book>) {
+  async execute(id: string, params: Partial<Book>): Promise<Book | null> {
     console.log('sucesso no usecase...')
-    return this.bookRepository.update(id, bodyParams);
+    return await this.bookRepository.update(id, params);
   }
-   
 }

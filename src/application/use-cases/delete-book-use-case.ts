@@ -1,4 +1,3 @@
-import { Book } from '../../domain/book';
 import { BookRepository } from '../repositories/book-repository';
 
 export class DeleteBookUseCase {
@@ -6,7 +5,7 @@ export class DeleteBookUseCase {
     private bookRepository: BookRepository
   ) {}
 
-  execute(id: string): Array<Book> {
-   return this.bookRepository.delete(id);
+  async execute(id: string): Promise<void> {
+    await this.bookRepository.delete(id);
   }
 }
